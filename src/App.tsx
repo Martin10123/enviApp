@@ -1,9 +1,9 @@
-import { RegisterScreen } from "./auth/RegisterScreen";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   return (
     <>
-      <RegisterScreen />
+      <HomePage />
     </>
   );
 }
