@@ -1,3 +1,4 @@
+import { SidebarNotificationPage } from "./pages/SidebarNotificationPage";
 import { DocumentsRegisters } from "./auth/DocumentsRegister";
 import { InformationRegister } from "./auth/InformationRegister";
 import { TermsConditionsRegister } from "./auth/TermsConditionsRegister";
@@ -19,4 +20,5 @@ export {
   NavbarHomePage,
   SidebarProfilePage,
   TextareaPostPage,
+  SidebarNotificationPage,
 };

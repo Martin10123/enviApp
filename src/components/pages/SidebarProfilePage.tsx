@@ -1,21 +1,27 @@
 import { useDisableScroll } from "@/hooks/useDisabledScroll";
-import { coffeeMug } from "@/images";
+import { avatar1 } from "@/images";
 
 interface SidebarProfilePageProps {
+  isScrollDisabled: boolean;
   handleOpenSideBar: () => void;
 }
 
 export const SidebarProfilePage = ({
   handleOpenSideBar,
+  isScrollDisabled,
 }: SidebarProfilePageProps) => {
-  useDisableScroll(true);
+  isScrollDisabled && useDisableScroll(true);
 
   return (
     <div
-      className={`w-full h-dvh grid fixed overflow-hidden top-0 left-0 z-[9999] transform duration-300 before:content before:w-full before:h-screen before:fixed before:top-0 before:left-0 before:z-[9998] before:bg-black before:opacity-50`}
+      className={`w-full h-dvh grid fixed top-0 left-0 z-[9999] transform duration-300 lg:relative lg:h-max lg:z-0`}
     >
-      <div className="w-72 overflow-hidden px-3 pb-3 bg-white relative z-[9999] flex flex-col">
-        <div className="w-full bg-white pt-4 flex justify-between items-center sticky top-0">
+      <div
+        className="before:content before:w-full before:h-screen before:fixed before:top-0 before:left-0 before:z-[9998] before:bg-black before:opacity-50 lg:hidden"
+        onClick={handleOpenSideBar}
+      ></div>
+      <div className="w-72 overflow-hidden px-3 pb-3 bg-white relative z-[9999] flex flex-col lg:w-80 lg:py-4 lg:shadow lg:rounded-lg">
+        <div className="w-full bg-white pt-4 flex justify-between items-center sticky top-0 lg:hidden">
           <h5 className="text-base font-semibold text-blue-500 uppercase">
             EnviApp
           </h5>
@@ -47,7 +53,7 @@ export const SidebarProfilePage = ({
               <figure className="flex flex-col items-center gap-4">
                 <img
                   className="w-32 h-w-32 rounded-md ring-2 ring-white"
-                  src={coffeeMug}
+                  src={avatar1}
                   alt="Coffee Mug"
                 />
 
@@ -319,11 +325,21 @@ export const SidebarProfilePage = ({
                 </button>
               </li>
               <li className="flex flex-wrap justify-center gap-2 text-sm text-gray-500">
-                <p className="cursor-pointer">Sobre nosotros</p>
-                <p className="cursor-pointer">Configuraciones</p>
-                <p className="cursor-pointer">Ayudas</p>
-                <p className="cursor-pointer">Soporte</p>
-                <p className="cursor-pointer">Terminos y condiciones</p>
+                <p className="cursor-pointer hover:text-blue-500 duration-300">
+                  Sobre nosotros
+                </p>
+                <p className="cursor-pointer hover:text-blue-500 duration-300">
+                  Configuraciones
+                </p>
+                <p className="cursor-pointer hover:text-blue-500 duration-300">
+                  Ayudas
+                </p>
+                <p className="cursor-pointer hover:text-blue-500 duration-300">
+                  Soporte
+                </p>
+                <p className="cursor-pointer hover:text-blue-500 duration-300">
+                  Terminos y condiciones
+                </p>
               </li>
             </ul>
           </div>

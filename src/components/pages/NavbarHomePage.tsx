@@ -1,4 +1,5 @@
-import { coffeeMug } from "@/images";
+import { useCloseModal } from "@/hooks/useCloseClickOutside";
+import { avatar1 } from "@/images";
 import { useState } from "react";
 
 interface NavbarHomePageProps {
@@ -12,10 +13,16 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
     setOpenProfileDrop(!openProfileDrop);
   };
 
+  const ref = useCloseModal<HTMLDivElement>(handleOpenProfileDrop);
+
   return (
-    <header className="w-full flex justify-between items-center p-2 bg-white border-b sticky top-0 z-50">
+    <header className="w-full flex justify-between items-center p-2 bg-white border-b sticky top-0 z-50 lg:max-w-[80rem] lg:m-auto lg:rounded-b-lg lg:shadow-sm">
       <figure>
-        <img className="w-12 h-auto" src="./assets/logoEnviApp.svg" alt="" />
+        <img
+          className="w-12 h-auto"
+          src="./assets/logoEnviApp.svg"
+          alt="Logo enviapp"
+        />
       </figure>
 
       <nav>
@@ -54,7 +61,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.193-.538 1.193H5.538c-.538 0-.538-.6-.538-1.193 0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365Zm-8.134 5.368a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M8.54 17.901a3.48 3.48 0 0 0 6.92 0H8.54Z"
+                d="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z"
               />
             </svg>
           </li>
@@ -73,12 +80,12 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z"
+                d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.193-.538 1.193H5.538c-.538 0-.538-.6-.538-1.193 0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365Zm-8.134 5.368a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M8.54 17.901a3.48 3.48 0 0 0 6.92 0H8.54Z"
               />
             </svg>
           </li>
           <li
-            className="flex gap-3 p-2 bg-gray-100 rounded-lg cursor-pointer"
+            className="flex gap-3 p-2 bg-gray-100 rounded-lg cursor-pointer lg:hidden"
             onClick={handleOpenSideBar}
           >
             <svg
@@ -101,20 +108,23 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
           </li>
           <li className="flex gap-3 relative">
             <img
-              className="size-10 rounded-md ring-2 ring-white"
-              src={coffeeMug}
+              className="size-10 rounded-md ring-2 ring-white cursor-pointer"
+              src={avatar1}
               alt="Coffee Mug"
               onClick={handleOpenProfileDrop}
             />
 
             {openProfileDrop && (
-              <div className="w-64 absolute right-0 bg-white top-12 p-4 shadow-lg rounded-lg">
+              <div
+                className="w-64 absolute right-0 bg-white top-12 p-4 shadow-lg rounded-lg"
+                ref={ref}
+              >
                 <div className="w-full">
                   <div>
                     <figure className="flex items-center gap-4">
                       <img
                         className="inline-block size-14 rounded-full object-cover ring-2 ring-white"
-                        src={coffeeMug}
+                        src={avatar1}
                         alt=""
                       />
                       <figcaption>
@@ -129,7 +139,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                   </div>
 
                   <ul className="pt-4">
-                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 text-gray-500">
+                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 text-gray-500 items-center cursor-pointer">
                       <svg
                         className="size-7 text-black"
                         aria-hidden="true"
@@ -156,7 +166,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                       </svg>
                       Configuraciones
                     </li>
-                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 text-gray-500">
+                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 text-gray-500 items-center cursor-pointer">
                       <svg
                         className="size-7 text-black"
                         aria-hidden="true"
@@ -176,7 +186,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                       </svg>
                       Soporte
                     </li>
-                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 text-gray-500">
+                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 text-gray-500 items-center cursor-pointer">
                       <svg
                         className="size-7 text-black"
                         aria-hidden="true"
@@ -196,7 +206,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                       </svg>
                       Terminos y condiciones
                     </li>
-                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300">
+                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 cursor-pointer">
                       <button className="flex items-center gap-2 text-red-500">
                         <svg
                           className="size-7 text-red-500"
@@ -218,7 +228,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                         Cerrar sesión
                       </button>
                     </li>
-                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300">
+                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl">
                       <div className="w-full flex gap-4">
                         <span>
                           Modo: <strong>Claro</strong>

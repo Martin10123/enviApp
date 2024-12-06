@@ -7,6 +7,9 @@ export default {
         "custom-gradient":
           "linear-gradient(to bottom, #3783ff, #889eff, #b9bcff, #dfddff, #ffffff)",
       },
+      screens: {
+        "md-2": "900px",
+      },
     },
   },
   plugins: [],
