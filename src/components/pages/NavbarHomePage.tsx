@@ -1,12 +1,14 @@
+import { AuthContext } from "@/context/AuthContext";
 import { useCloseModal } from "@/hooks/useCloseClickOutside";
 import { avatar1 } from "@/images";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 interface NavbarHomePageProps {
   handleOpenSideBar: () => void;
 }
 
 export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
+  const { signOut } = useContext(AuthContext);
   const [openProfileDrop, setOpenProfileDrop] = useState(false);
 
   const handleOpenProfileDrop = () => {
@@ -206,7 +208,10 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
                       </svg>
                       Terminos y condiciones
                     </li>
-                    <li className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 cursor-pointer">
+                    <li
+                      className="flex gap-2 p-2 py-3 border-b rounded-b-lg drop-shadow-xl hover:bg-gray-100 duration-300 cursor-pointer"
+                      onClick={signOut}
+                    >
                       <button className="flex items-center gap-2 text-red-500">
                         <svg
                           className="size-7 text-red-500"
