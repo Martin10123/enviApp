@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 export const ForgotPassword = () => {
   return (
-    <section className="bg-[#ebebeb]">
+    <section className="bg-[#ebebeb] h-dvh flex items-center">
       <div className="flex flex-col items-center justify-center px-6 py-4 mx-auto md:h-screen lg:py-0">
         <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
           <img
@@ -16,7 +17,13 @@ export const ForgotPassword = () => {
           </h1>
           <p className="font-light text-gray-500 dark:text-gray-400">
             Ingresa tu correo electrónico y te enviaremos un enlace para
-            restablecer tu contraseña
+            restablecer tu contraseña{" "}
+            <Link
+              className="text-blue-500 cursor-pointer hover:underline"
+              to="/login"
+            >
+              Iniciar sesión
+            </Link>
           </p>
           <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
             <div>
@@ -59,7 +66,7 @@ export const ForgotPassword = () => {
               type="submit"
               className="w-full bg-blue-500 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
-              Reset password
+              Recuperar contraseña
             </button>
           </form>
         </div>
