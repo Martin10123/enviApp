@@ -14,7 +14,7 @@ export const RegisterScreen = () => {
   };
 
   return (
-    <AuthTemplate titleRedirect="¿Ya tienes cuenta?">
+    <AuthTemplate titleRedirect="¿Ya tienes cuenta?" linkRedirect="/login">
       <ol className="flex items-center w-full">
         {[1, 2, 3].map((step) => (
           <li

@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
 import { enviAppLogin } from "../images";
 
 interface AuthTemplateProps {
   children: React.ReactElement | React.ReactElement[];
   titleRedirect: string;
+  linkRedirect: string;
 }
 
 export const AuthTemplate = ({
   children,
   titleRedirect,
+  linkRedirect,
 }: AuthTemplateProps) => {
   return (
     <section className="w-full p-4 flex justify-center items-center lg:grid lg:grid-cols-2 lg:h-screen before:content before:w-full before:h-screen before:fixed before:top-0 before:left-0 before:bg-[#ebebeb] before:-z-50">
@@ -25,9 +28,12 @@ export const AuthTemplate = ({
           <p className="text-base font-normal text-gray-500">
             la aplicación que te permite llevar tus productos de manera sencilla
             y eficiente a cualquier lugar del mundo.{" "}
-            <a className="text-blue-500 rounded-lg py-3.5 font-medium cursor-pointer hover:underline">
+            <Link
+              className="text-blue-500 rounded-lg py-3.5 font-medium cursor-pointer hover:underline"
+              to={linkRedirect}
+            >
               {titleRedirect}
-            </a>
+            </Link>
           </p>
         </div>
 

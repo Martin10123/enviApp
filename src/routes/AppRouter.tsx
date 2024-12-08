@@ -1,3 +1,4 @@
+import { ForgotPassword } from "@/auth/ForgotPassword";
 import { LoginScreen } from "@/auth/LoginScreen";
 import { RegisterScreen } from "@/auth/RegisterScreen";
 import { AuthContext } from "@/context/AuthContext";
@@ -20,6 +21,7 @@ export const AppRouter = () => {
         <>
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/recover" element={<ForgotPassword />} />
 
           <Route path="*" element={<Navigate to="/login" />} />
         </>

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useForm } from "@/hooks/useForm";
 import { AuthTemplate } from "../templates/AuthTemplate";
 import { AuthContext } from "@/context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginScreen = () => {
   const { signIn } = useContext(AuthContext);
@@ -29,7 +29,7 @@ export const LoginScreen = () => {
   };
 
   return (
-    <AuthTemplate titleRedirect="Regístrate">
+    <AuthTemplate titleRedirect="Regístrate" linkRedirect="/register">
       <form className="grid gap-2" onSubmit={handleSubmit}>
         <div>
           <label
@@ -58,7 +58,7 @@ export const LoginScreen = () => {
           <input
             type="password"
             id="Contrasena"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 md:py-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 mb-2 md:py-2.5"
             placeholder="Contraseña..."
             name="password"
             value={password}
@@ -66,11 +66,39 @@ export const LoginScreen = () => {
           />
         </div>
 
-        {/* Mostrar error si las credenciales son incorrectas */}
-        {error && (
-          <div className="text-red-500 text-sm font-medium">{error}</div>
-        )}
-
+        <div className="flex items-center gap-2 text-gray-900 text-sm font-medium justify-center py-3">
+          <div className="w-full h-0.5 bg-gray-200"></div>
+          <div>O</div>
+          <div className="w-full h-0.5 bg-gray-200"></div>
+        </div>
+        <div className="grid gap-4">
+          <button className="w-full border rounded-lg py-3.5 font-medium flex items-center justify-center gap-2 hover:bg-gray-100 duration-300">
+            <img className="w-7 h-7" src="./assets/gmail.svg" alt="Google" />
+            <p>Iniciar con Google</p>
+          </button>
+          <button className="w-full border rounded-lg py-3.5 font-medium flex items-center justify-center gap-2 hover:bg-gray-100 duration-300">
+            <img className="w-7 h-7" src="./assets/sms.svg" alt="Facebook" />
+            <p>Iniciar con SMS</p>
+          </button>
+        </div>
+        <div className="flex justify-between py-4">
+          <div className="w-full flex items-center gap-2">
+            <input type="checkbox" name="" id="recordarme" />
+            <label
+              className="text-gray-500 text-base font-medium"
+              htmlFor="recordarme"
+            >
+              Recordar mi cuenta
+            </label>
+          </div>
+          <div className="flex items-center">
+            <button className="text-blue-500 font-medium hover:underline">
+              <Link className="md:flex md:w-max" to="/recover">
+                Olvidaste tu contraseña?
+              </Link>
+            </button>
+          </div>
+        </div>
         <div>
           <button
             className="w-full bg-blue-500 text-white rounded-lg py-3.5 font-medium hover:bg-blue-600 duration-300"
@@ -79,6 +107,10 @@ export const LoginScreen = () => {
             Iniciar sesión
           </button>
         </div>
+
+        {error && (
+          <div className="text-red-500 text-sm font-medium">{error}</div>
+        )}
       </form>
     </AuthTemplate>
   );
