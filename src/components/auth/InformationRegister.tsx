@@ -1,10 +1,4 @@
-interface InformationRegisterProps {
-  handleTabs: (tab: number) => void;
-}
-
-export const InformationRegister = ({
-  handleTabs,
-}: InformationRegisterProps) => {
+export const InformationRegister = () => {
   return (
     <>
       <div className="grid gap-2 lg:grid-cols-2">
@@ -118,16 +112,6 @@ export const InformationRegister = ({
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 mb-2 md:py-2.5"
           placeholder="Número de telefono..."
         />
-      </div>
-
-      <div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
-          onClick={() => handleTabs(2)}
-        >
-          Siguiente
-        </button>
       </div>
     </>
   );

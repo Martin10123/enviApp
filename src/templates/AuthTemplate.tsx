@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { enviAppLogin } from "../images";
 
 interface AuthTemplateProps {
-  children: React.ReactElement | React.ReactElement[];
+  children: React.ReactNode | React.ReactNode[];
   titleRedirect: string;
   linkRedirect: string;
 }
@@ -21,15 +21,16 @@ export const AuthTemplate = ({
             src="./assets/logoEnviApp.svg"
             alt="Logo EnviApp"
           />
+
+          <h2 className="text-3xl font-bold text-gray-900">EnviApp</h2>
         </nav>
 
         <div className="flex flex-col gap-2">
-          <h2 className="text-3xl font-bold text-gray-900">EnviApp</h2>
           <p className="text-base font-normal text-gray-500">
-            la aplicación que te permite llevar tus productos de manera sencilla
-            y eficiente a cualquier lugar del mundo.{" "}
+            La aplicación que te permite enviar tus productos de manera
+            sencilla, segura y eficiente a cualquier lugar del mundo.{" "}
             <Link
-              className="text-blue-500 rounded-lg py-3.5 font-medium cursor-pointer hover:underline"
+              className="text-blue-500 rounded-lg font-medium cursor-pointer hover:underline"
               to={linkRedirect}
             >
               {titleRedirect}

@@ -19,7 +19,7 @@ export const ForgotPassword = () => {
             Ingresa tu correo electrónico y te enviaremos un enlace para
             restablecer tu contraseña{" "}
             <Link
-              className="text-blue-500 cursor-pointer hover:underline"
+              className="text-blue-500 rounded-lg font-medium cursor-pointer hover:underline"
               to="/login"
             >
               Iniciar sesión

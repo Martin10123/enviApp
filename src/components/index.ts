@@ -7,6 +7,8 @@ import { CardProductPage } from "./pages/CardProductPage";
 import { NavbarHomePage } from "./pages/NavbarHomePage";
 import { SidebarProfilePage } from "./pages/SidebarProfilePage";
 import { TextareaPostPage } from "./pages/TextareaPostPage";
+import { AlertRegisterCompleteOBasic } from "./auth/AlertRegisterCompleteOBasic";
+import { ListOptionsRegister } from "./auth/ListOptionsRegister";
 
 export {
   // auth
@@ -14,6 +16,8 @@ export {
   InformationRegister,
   UploadFilesRegister,
   TermsConditionsRegister,
+  ListOptionsRegister,
+  AlertRegisterCompleteOBasic,
 
   // pages
   CardProductPage,

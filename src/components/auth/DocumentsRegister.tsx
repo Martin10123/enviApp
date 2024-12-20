@@ -1,10 +1,6 @@
 import { UploadFilesRegister } from "@/components";
 
-interface DocumentsRegistersProps {
-  handleTabs: (tab: number) => void;
-}
-
-export const DocumentsRegisters = ({ handleTabs }: DocumentsRegistersProps) => {
+export const DocumentsRegisters = () => {
   return (
     <>
       <div>
@@ -36,23 +32,6 @@ export const DocumentsRegisters = ({ handleTabs }: DocumentsRegistersProps) => {
         </label>
 
         <UploadFilesRegister />
-      </div>
-
-      <div className="grid grid-cols-2 gap-2">
-        <button
-          type="submit"
-          className="bg-blue-500 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
-          onClick={() => handleTabs(1)}
-        >
-          Regresar
-        </button>
-        <button
-          type="submit"
-          className="bg-blue-500 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
-          onClick={() => handleTabs(3)}
-        >
-          Siguiente
-        </button>
       </div>
     </>
   );

@@ -1,24 +1,24 @@
 import { UploadFilesRegister } from "./UploadFilesRegister";
 
-interface TermsConditionsRegisterProps {
-  handleTabs: (tab: number) => void;
-}
-
 export const TermsConditionsRegister = ({
-  handleTabs,
-}: TermsConditionsRegisterProps) => {
+  isCompleteForm,
+}: {
+  isCompleteForm: boolean;
+}) => {
   return (
     <>
-      <div>
-        <label
-          htmlFor="tipoDocumento"
-          className="w-max block mb-2 text-sm font-medium text-gray-900"
-        >
-          Antecedentes judiciales
-        </label>
+      {isCompleteForm && (
+        <div>
+          <label
+            htmlFor="tipoDocumento"
+            className="w-max block mb-2 text-sm font-medium text-gray-900"
+          >
+            Antecedentes judiciales
+          </label>
 
-        <UploadFilesRegister />
-      </div>
+          <UploadFilesRegister />
+        </div>
+      )}
       <div>
         <label
           htmlFor="Alias"
@@ -68,22 +68,6 @@ export const TermsConditionsRegister = ({
             condiciones
           </a>
         </label>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2">
-        <button
-          type="submit"
-          className="bg-gray-400 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
-          onClick={() => handleTabs(2)}
-        >
-          Regresar
-        </button>
-        <button
-          type="submit"
-          className="bg-blue-500 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
-        >
-          Registrarse
-        </button>
       </div>
     </>
   );
