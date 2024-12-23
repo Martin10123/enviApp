@@ -1,24 +1,6 @@
-import { UploadFilesRegister } from "./UploadFilesRegister";
-
-export const TermsConditionsRegister = ({
-  isCompleteForm,
-}: {
-  isCompleteForm: boolean;
-}) => {
+export const TermsConditionsRegister = () => {
   return (
     <>
-      {isCompleteForm && (
-        <div>
-          <label
-            htmlFor="tipoDocumento"
-            className="w-max block mb-2 text-sm font-medium text-gray-900"
-          >
-            Antecedentes judiciales
-          </label>
-
-          <UploadFilesRegister />
-        </div>
-      )}
       <div>
         <label
           htmlFor="Alias"

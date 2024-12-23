@@ -8,16 +8,7 @@ export const CardProductPage = ({ isImages }: { isImages?: boolean }) => {
 
   const images = isImages
     ? [coffeeMug]
-    : [
-        avatar1,
-        avatar2,
-        coffeeMug,
-        coffeeMug,
-        coffeeMug,
-        avatar2,
-        avatar3,
-        coffeeMug,
-      ];
+    : [avatar1, avatar2, coffeeMug, avatar3];
 
   const openLightbox = (index: number) => {
     setSelectedImageIndex(index);
@@ -80,7 +71,6 @@ export const CardProductPage = ({ isImages }: { isImages?: boolean }) => {
               onClick={() => openLightbox(index)}
             />
 
-            {/* Solo mostrar el mensaje en el cuarto cuadro */}
             {index === 3 && images.length > 4 && (
               <div
                 className="bg-black bg-opacity-50 absolute top-0 w-full h-full flex justify-center items-center text-white rounded-lg"

@@ -76,10 +76,6 @@ export const LoginScreen = () => {
             <img className="w-7 h-7" src="./assets/gmail.svg" alt="Google" />
             <p>Iniciar con Google</p>
           </button>
-          <button className="w-full border rounded-lg py-3.5 font-medium flex items-center justify-center gap-2 hover:bg-gray-100 duration-300">
-            <img className="w-7 h-7" src="./assets/sms.svg" alt="Facebook" />
-            <p>Iniciar con SMS</p>
-          </button>
         </div>
         <div className="flex justify-between py-4">
           <div className="w-full flex items-center gap-2">

@@ -78,40 +78,77 @@ export const InformationRegister = () => {
           placeholder="Correo..."
         />
       </div>
-      <div>
-        <label
-          htmlFor="Pais"
-          className="w-max block mb-2 text-sm font-medium text-gray-900"
-        >
-          País
-        </label>
-        <select
-          id="Pais"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 mb-2 md:py-2.5"
-        >
-          <option>Elige un pais</option>
-          <option value="colombia">Colombia</option>
-          <option value="argentina">Argentina</option>
-          <option value="chile">Chile</option>
-          <option value="peru">Perú</option>
-          <option value="mexico">México</option>
-          <option value="españa">España</option>
-          <option value="otro">Otro</option>
-        </select>
+      <div className="grid gap-2 lg:grid-cols-2">
+        <div>
+          <label
+            htmlFor="Pais"
+            className="w-max block mb-2 text-sm font-medium text-gray-900"
+          >
+            País
+          </label>
+          <select
+            id="Pais"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 mb-2 md:py-2.5"
+          >
+            <option>Elige un pais</option>
+            <option value="colombia">Colombia</option>
+            <option value="argentina">Argentina</option>
+            <option value="chile">Chile</option>
+            <option value="peru">Perú</option>
+            <option value="mexico">México</option>
+            <option value="españa">España</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div>
+          <label
+            htmlFor="NumeroTelefono"
+            className="w-max block mb-2 text-sm font-medium text-gray-900"
+          >
+            Número de telefono
+          </label>
+          <input
+            type="number"
+            id="NumeroTelefono"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 mb-2 md:py-2.5"
+            placeholder="Número de telefono..."
+          />
+        </div>
       </div>
       <div>
         <label
-          htmlFor="NumeroTelefono"
+          htmlFor="Contraseña"
           className="w-max block mb-2 text-sm font-medium text-gray-900"
         >
-          Número de telefono
+          Contraseña
         </label>
         <input
-          type="number"
-          id="NumeroTelefono"
+          type="password"
+          id="Contraseña"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-3.5 px-2.5 mb-2 md:py-2.5"
-          placeholder="Número de telefono..."
+          placeholder="Contraseña..."
         />
+      </div>
+      <div className="flex gap-2 items-center justify-end">
+        <input
+          type="checkbox"
+          id="termsConditions"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block"
+        />
+        <label
+          htmlFor="termsConditions"
+          className="w-max block text-base font-medium text-gray-400"
+        >
+          Acepta
+          <a className="text-blue-500 hover:underline" href="#">
+            {" "}
+            terminos
+          </a>{" "}
+          y{" "}
+          <a className="text-blue-500 hover:underline" href="#">
+            condiciones
+          </a>
+        </label>
       </div>
     </>
   );
