@@ -9,6 +9,7 @@ import { SidebarProfilePage } from "./pages/SidebarProfilePage";
 import { TextareaPostPage } from "./pages/TextareaPostPage";
 import { AlertRegisterCompleteOBasic } from "./auth/AlertRegisterCompleteOBasic";
 import { ListOptionsRegister } from "./auth/ListOptionsRegister";
+import { PostPackage } from "./pages/PostPackage";
 
 export {
   // auth
@@ -25,4 +26,7 @@ export {
   SidebarProfilePage,
   TextareaPostPage,
   SidebarNotificationPage,
+
+  // components
+  PostPackage,
 };

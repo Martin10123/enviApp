@@ -1,6 +1,7 @@
 import {
   CardProductPage,
   NavbarHomePage,
+  PostPackage,
   SidebarNotificationPage,
   SidebarProfilePage,
   TextareaPostPage,
@@ -59,6 +60,8 @@ export const HomePage = () => {
 
           <SidebarNotificationPage />
         </div>
+
+        <PostPackage />
       </main>
     </>
   );
