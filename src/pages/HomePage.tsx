@@ -37,7 +37,7 @@ export const HomePage = () => {
     <>
       <NavbarHomePage handleOpenSideBar={handleOpenSideBar} />
 
-      <main className="w-full p-3 before:content before:w-full before:h-full lg:max-w-[80rem] lg:m-auto lg:px-0 before:fixed before:top-0 before:left-0 before:-z-50 before:bg-[#eff2f6] before:bg-opacity-50 before:backdrop-filter before:duration-200 before:ease-in-out">
+      <main className="w-full p-3 before:content before:w-full before:h-full lg:max-w-[80rem] lg:m-auto lg:px-0 before:fixed before:top-0 before:left-0 before:-z-50 before:bg-[#e4e4e4] before:bg-opacity-50 before:backdrop-filter before:duration-200 before:ease-in-out">
         <div className="lg:grid gap-6 lg:grid-cols-[auto,1fr,auto]">
           {openSideBar && (
             <SidebarProfilePage
