@@ -1,5 +1,6 @@
 import { useDisableScroll } from "@/hooks/useDisabledScroll";
 import { avatar1 } from "@/images";
+import { useEffect, useState } from "react";
 
 interface SidebarProfilePageProps {
   isScrollDisabled: boolean;
@@ -12,13 +13,31 @@ export const SidebarProfilePage = ({
 }: SidebarProfilePageProps) => {
   isScrollDisabled && useDisableScroll(true);
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+
+    return () => {
+      setIsVisible(false);
+    };
+  }, []);
+
+  const handleClose = () => {
+    setIsVisible(false);
+
+    setTimeout(handleOpenSideBar, 300);
+  };
+
   return (
     <div
-      className={`w-full h-dvh grid fixed top-0 left-0 z-[9999] transform duration-300 lg:relative lg:h-max lg:z-0`}
+      className={`w-full h-dvh grid fixed top-0 left-0 z-[9999] transform duration-300 lg:relative lg:h-max lg:z-0 ${
+        isVisible ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
+      }`}
     >
       <div
         className="before:content before:w-full before:h-screen before:fixed before:top-0 before:left-0 before:z-[9998] before:bg-black before:opacity-50 lg:hidden"
-        onClick={handleOpenSideBar}
+        onClick={handleClose}
       ></div>
       <div className="w-72 overflow-hidden px-3 pb-3 bg-white relative z-[9999] flex flex-col lg:w-80 lg:py-4 lg:shadow lg:rounded-lg">
         <div className="w-full bg-white pt-4 flex justify-between items-center sticky top-0 lg:hidden">
@@ -28,7 +47,7 @@ export const SidebarProfilePage = ({
           <button
             type="button"
             className="text-gray-400 bg-transparent p-2 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm inline-flex items-center"
-            onClick={handleOpenSideBar}
+            onClick={handleClose}
           >
             <svg
               aria-hidden="true"

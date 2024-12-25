@@ -11,9 +11,14 @@ import { useEffect, useState } from "react";
 export const HomePage = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
   const [isScrollDisabled, setIsScrollDisabled] = useState(false);
+  const [openCreatePost, setOpenCreatePost] = useState(false);
 
   const handleOpenSideBar = () => {
     setOpenSideBar(!openSideBar);
+  };
+
+  const handleCreatePost = () => {
+    setOpenCreatePost(!openCreatePost);
   };
 
   useEffect(() => {
@@ -48,7 +53,7 @@ export const HomePage = () => {
           )}
 
           <div className="w-full flex flex-col items-center justify-center">
-            <TextareaPostPage />
+            <TextareaPostPage handleCreatePost={handleCreatePost} />
 
             <div className="bg-gray-100 pt-4 flex flex-col items-center gap-4">
               <CardProductPage isImages />
@@ -61,7 +66,7 @@ export const HomePage = () => {
           <SidebarNotificationPage />
         </div>
 
-        <PostPackage />
+        {openCreatePost && <PostPackage handleCreatePost={handleCreatePost} />}
       </main>
     </>
   );

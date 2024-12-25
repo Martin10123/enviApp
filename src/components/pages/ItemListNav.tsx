@@ -1,0 +1,31 @@
+interface ItemListNavProps {
+  d: string;
+  onClick?: () => void;
+}
+
+export const ItemListNav = ({ d, onClick }: ItemListNavProps) => {
+  return (
+    <li
+      className="flex gap-3 p-2 bg-gray-100 rounded-lg cursor-pointer"
+      onClick={onClick}
+    >
+      <svg
+        className="size-7 text-black"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d={d}
+        />
+      </svg>
+    </li>
+  );
+};
