@@ -32,6 +32,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
           <ItemListNav
             d="M6 6h8m-8 4h12M6 14h8m-8 4h12"
             onClick={handleOpenSideBar}
+            hidden
           />
 
           <li className="flex gap-3 relative">

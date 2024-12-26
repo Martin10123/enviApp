@@ -28,7 +28,7 @@ export const InputWithIcon = ({
         <input
           type={type}
           id={id}
-          className="block py-3.5 px-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 mb-2 md:py-2.5"
+          className="block py-3.5 px-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 mb-2 md:py-2.5"
           placeholder={placeholder}
         />
       </div>

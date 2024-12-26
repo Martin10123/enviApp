@@ -1,29 +1,7 @@
-import { avatar1, avatar2, avatar3, coffeeMug } from "@/images";
-import { CustomLightbox } from "../CustomLightbox";
-import { useState } from "react";
+import { avatar1, avatar2, avatar3 } from "@/images";
+import { LightboxImages } from "./LightboxImages";
 
 export const CardProductPage = ({ isImages }: { isImages?: boolean }) => {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
-  const images = isImages
-    ? [coffeeMug]
-    : [
-        avatar1,
-        avatar2,
-        coffeeMug,
-        coffeeMug,
-        coffeeMug,
-        avatar2,
-        avatar3,
-        coffeeMug,
-      ];
-
-  const openLightbox = (index: number) => {
-    setSelectedImageIndex(index);
-    setIsLightboxOpen(true);
-  };
-
   return (
     <div className="bg-white p-4 rounded-lg shadow-md max-w-md md:max-w-full lg:max-w-2xl lg:w-full">
       <div className="flex items-center justify-between mb-4">
@@ -70,35 +48,7 @@ export const CardProductPage = ({ isImages }: { isImages?: boolean }) => {
         </p>
       </div>
 
-      <div className={isImages ? "mb-4" : "grid grid-cols-2 gap-2 mb-4"}>
-        {images.slice(0, 4).map((img, index) => (
-          <div className="relative" key={index}>
-            <img
-              src={img}
-              alt={`Image ${index + 1}`}
-              className="h-auto max-w-full rounded-lg cursor-pointer"
-              onClick={() => openLightbox(index)}
-            />
-
-            {/* Solo mostrar el mensaje en el cuarto cuadro */}
-            {index === 3 && images.length > 4 && (
-              <div
-                className="bg-black bg-opacity-50 absolute top-0 w-full h-full flex justify-center items-center text-white rounded-lg"
-                onClick={() => openLightbox(index)}
-              >
-                <p>{`+${images.length - 4} imágenes más`}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      <CustomLightbox
-        images={images}
-        isOpen={isLightboxOpen}
-        initialIndex={selectedImageIndex}
-        onClose={() => setIsLightboxOpen(false)}
-      />
+      <LightboxImages isImages={isImages || false} />
 
       <div className="flex items-center justify-between text-gray-500">
         <div className="flex items-center space-x-2">

@@ -1,12 +1,15 @@
 interface ItemListNavProps {
   d: string;
   onClick?: () => void;
+  hidden?: boolean;
 }
 
-export const ItemListNav = ({ d, onClick }: ItemListNavProps) => {
+export const ItemListNav = ({ d, onClick, hidden }: ItemListNavProps) => {
   return (
     <li
-      className="flex gap-3 p-2 bg-gray-100 rounded-lg cursor-pointer"
+      className={`flex gap-3 p-2 bg-gray-100 rounded-lg cursor-pointer ${
+        hidden ? "lg:hidden" : ""
+      }`}
       onClick={onClick}
     >
       <svg

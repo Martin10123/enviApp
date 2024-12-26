@@ -1,7 +1,7 @@
 export const SidebarNotificationPage = () => {
   return (
-    <aside className="max-w-80 hidden lg:flex lg:flex-col lg:gap-4">
-      <div className="bg-white p-3 rounded-lg shadow">
+    <aside className="max-w-80 hidden lg:flex flex-col gap-4 sticky top-[4.8rem] h-[calc(100vh-6rem)] overflow-auto bg-white p-2 shadow rounded-lg">
+      <div className="bg-white p-3 rounded-lg border-b">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Notificaciones
         </h2>
@@ -121,7 +121,7 @@ export const SidebarNotificationPage = () => {
         </div>
       </div>
 
-      <div className="bg-white p-3 rounded-lg shadow">
+      <div className="bg-white p-3 rounded-lg border-t">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Noticias nuevas
         </h2>

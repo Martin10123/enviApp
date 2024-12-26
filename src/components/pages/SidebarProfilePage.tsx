@@ -31,7 +31,7 @@ export const SidebarProfilePage = ({
 
   return (
     <div
-      className={`w-full h-dvh grid fixed top-0 left-0 z-[9999] transform duration-300 lg:relative lg:h-max lg:z-0 ${
+      className={`w-full h-dvh grid fixed top-0 left-0 z-[9999] transform duration-300 lg:sticky lg:top-[4.8rem] lg:h-[calc(100vh-6rem)] lg:z-0 lg:overflow-auto ${
         isVisible ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
       }`}
     >

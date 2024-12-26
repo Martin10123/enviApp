@@ -19,12 +19,15 @@ export const TextareaPostPage = ({
         </figure>
 
         <div>
-          <div className="w-full border border-gray-200 rounded-lg bg-gray-50">
+          <div className="w-full border border-gray-200 rounded-lg bg-gray-50 cursor-pointer">
             <div
               className="w-full h-36 bg-white rounded-t-lg p-2"
               onClick={handleCreatePost}
             >
-              <label htmlFor="comment" className="text-base text-gray-400">
+              <label
+                htmlFor="comment"
+                className="text-base text-gray-400 cursor-text"
+              >
                 ¿Que te gustaría enviar hoy?...
               </label>
 
