@@ -3,44 +3,42 @@ import { AuthContext, AuthState } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: ReactElement }) => {
   const [isLogged, setIsLogged] = useState(false);
-  const [user, setUser] = useState<AuthState | null>(null);
+  const [userState, setUserState] = useState<AuthState | null>(null);
 
-  const signIn = () => {
-    setIsLogged(true);
-    setUser({ name: "Admin" });
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userState = localStorage.getItem("userState");
 
-    localStorage.setItem("isLogged", "true");
-    localStorage.setItem("user", JSON.stringify({ name: "Admin" }));
+    if (token && userState) {
+      setIsLogged(true);
+      setUserState(JSON.parse(userState));
+    }
+  }, []);
+
+  const fetchUserData = (user: AuthState) => {
+    try {
+      setUserState(user);
+      setIsLogged(true);
+    } catch (e) {
+      console.error("Error fetching user data", e);
+      signOut();
+    }
   };
 
   const signOut = () => {
     setIsLogged(false);
-    setUser(null);
+    setUserState(null);
 
-    localStorage.removeItem("isLogged");
-    localStorage.removeItem("user");
+    localStorage.clear();
   };
-
-  useEffect(() => {
-    const isLogged = localStorage.getItem("isLogged");
-    const user = localStorage.getItem("user");
-
-    if (isLogged) {
-      setIsLogged(true);
-    }
-
-    if (user) {
-      setUser(JSON.parse(user));
-    }
-  }, []);
 
   return (
     <AuthContext.Provider
       value={{
         isLogged,
-        user,
-        signIn,
+        userState,
         signOut,
+        fetchUserData,
       }}
     >
       {children}
