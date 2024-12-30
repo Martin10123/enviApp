@@ -3,6 +3,7 @@ import { AuthContext, AuthState } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: ReactElement }) => {
   const [isLogged, setIsLogged] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [userState, setUserState] = useState<AuthState | null>(null);
 
   useEffect(() => {
@@ -12,6 +13,9 @@ export const AuthProvider = ({ children }: { children: ReactElement }) => {
     if (token && userState) {
       setIsLogged(true);
       setUserState(JSON.parse(userState));
+      setLoading(false);
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -37,6 +41,7 @@ export const AuthProvider = ({ children }: { children: ReactElement }) => {
       value={{
         isLogged,
         userState,
+        loading,
         signOut,
         fetchUserData,
       }}

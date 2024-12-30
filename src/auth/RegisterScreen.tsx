@@ -1,62 +1,49 @@
-import {
-  AlertRegisterCompleteOBasic,
-  DocumentsRegisters,
-  InformationRegister,
-  ListOptionsRegister,
-  TermsConditionsRegister,
-} from "@/components";
+import { AlertRegisterCompleteOBasic } from "@/components/auth/AlertRegisterCompleteOBasic";
+import { DocumentsRegisters } from "@/components/auth/DocumentsRegister";
+import { InformationRegister } from "@/components/auth/InformationRegister";
+import { ListOptionsRegister } from "@/components/auth/ListOptionsRegister";
+import { TermsConditionsRegister } from "@/components/auth/TermsConditionsRegister";
+import { useRegister } from "@/hooks/useRegister";
+
 import { AuthTemplate } from "@/templates/AuthTemplate";
-import { useState } from "react";
 
 export const RegisterScreen = () => {
-  const [tabs, setTabs] = useState(1);
-  const [alertMessage, setAlertMessage] = useState(false);
-  const [isCompleteForm, setIsCompleteForm] = useState(false);
-
-  const handleTabs = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    tab: number
-  ) => {
-    e.preventDefault();
-
-    if (!isCompleteForm && tabs === 1) {
-      setAlertMessage(true);
-      return;
-    }
-
-    if (!isCompleteForm && tabs === 3) {
-      setTabs(1);
-      return;
-    }
-
-    if (isCompleteForm && tab === 1) {
-      setIsCompleteForm(false);
-    }
-
-    setTabs(tab);
-  };
-
-  const handleCompleteForm = (isCompleteForm: boolean) => {
-    setIsCompleteForm(isCompleteForm);
-
-    if (isCompleteForm) {
-      setTabs(2);
-      setAlertMessage(false);
-    } else {
-      setTabs(3);
-      setAlertMessage(false);
-    }
-  };
+  const {
+    tabs,
+    alertMessage,
+    countries,
+    error,
+    formState,
+    handleCompleteForm,
+    handleTabs,
+    idDocumentType,
+    loadingDocument,
+    loadingSaveForm,
+    onInputChange,
+    onSubmitForm,
+    setAlertMessage,
+  } = useRegister();
 
   return (
-    <AuthTemplate titleRedirect="¿Ya tienes cuenta?" linkRedirect="/login">
+    <AuthTemplate titleRedirect="¿Ya tienes cuenta?" linkRedirect="/auth/login">
       <ListOptionsRegister tabs={tabs} />
 
-      <form className="grid gap-2">
-        {tabs === 1 && <InformationRegister />}
+      <form className="grid gap-2" onSubmit={onSubmitForm}>
+        {tabs === 1 && (
+          <InformationRegister
+            formState={formState}
+            onInputChange={onInputChange}
+            countries={countries}
+            idDocumentType={idDocumentType}
+            loadingDocument={loadingDocument}
+          />
+        )}
         {tabs === 2 && <DocumentsRegisters />}
         {tabs === 3 && (
-          <TermsConditionsRegister isCompleteForm={isCompleteForm} />
+          <TermsConditionsRegister
+            formState={formState}
+            onInputChange={onInputChange}
+          />
         )}
 
         <div
@@ -66,7 +53,7 @@ export const RegisterScreen = () => {
             <button
               type="button"
               onClick={(e) => handleTabs(e, tabs - 1)}
-              className="bg-blue-500 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
+              className="bg-gray-400 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
             >
               Regresar
             </button>
@@ -87,10 +74,16 @@ export const RegisterScreen = () => {
               type="submit"
               className="bg-blue-500 mt-4 text-white text-sm font-medium rounded-lg focus:ring-blue-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none py-3.5 px-2.5 w-full md:py-2.5"
             >
-              Registrarse
+              {loadingSaveForm ? "Guardando..." : "Registrarse"}
             </button>
           )}
         </div>
+
+        {error && (
+          <div className="text-red-500 text-sm font-medium text-center mt-2">
+            {error}
+          </div>
+        )}
       </form>
 
       {alertMessage && (

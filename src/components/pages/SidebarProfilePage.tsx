@@ -1,6 +1,7 @@
+import { AuthContext } from "@/context/AuthContext";
 import { useDisableScroll } from "@/hooks/useDisabledScroll";
 import { avatar1 } from "@/images";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 interface SidebarProfilePageProps {
   isScrollDisabled: boolean;
@@ -14,6 +15,7 @@ export const SidebarProfilePage = ({
   isScrollDisabled && useDisableScroll(true);
 
   const [isVisible, setIsVisible] = useState(false);
+  const { userState } = useContext(AuthContext);
 
   useEffect(() => {
     setIsVisible(true);
@@ -77,11 +79,11 @@ export const SidebarProfilePage = ({
                 />
 
                 <figcaption>
-                  <h4 className="text-xl font-bold text-black">
-                    Martin Elias Simarra
+                  <h4 className="text-xl text-center font-bold text-black">
+                    {userState?.firstName} {userState?.lastName}
                   </h4>
                   <p className="text-center text-base text-gray-500">
-                    Desarrollador web
+                    {userState?.email}
                   </p>
                 </figcaption>
               </figure>
@@ -94,15 +96,15 @@ export const SidebarProfilePage = ({
 
                 <ul className="w-full grid py-4 border-b grid-cols-[auto,1fr,auto] gap-4">
                   <li className="text-center">
-                    <p className="font-bold">250</p>
+                    <p className="font-bold">0</p>
                     <p className="text-sm text-gray-500">Post</p>
                   </li>
                   <li className="text-center border-l border-r">
-                    <p className="font-bold">1.000</p>
+                    <p className="font-bold">0</p>
                     <p className="text-sm text-gray-500">Seguidores</p>
                   </li>
                   <li className="text-center">
-                    <p className="font-bold">500</p>
+                    <p className="font-bold">0</p>
                     <p className="text-sm text-gray-500">Seguidos</p>
                   </li>
                 </ul>

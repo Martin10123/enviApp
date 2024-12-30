@@ -14,7 +14,7 @@ export const DropdownUserProfile = ({
     setTimeout(handleOpenProfileDrop, 300);
   };
 
-  const { signOut } = useContext(AuthContext);
+  const { signOut, userState } = useContext(AuthContext);
   const ref = useCloseModal<HTMLDivElement>(handleClose);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -43,12 +43,16 @@ export const DropdownUserProfile = ({
               alt=""
             />
             <figcaption>
-              <h3 className="text-lg font-bold">Martin Elias</h3>
-              <p className="text-sm text-gray-500">Martin10123</p>
+              <h3 className="text-lg font-bold">
+                {userState?.firstName} {userState?.lastName}
+              </h3>
+              <p className="text-sm text-gray-500 max-w-[150px] truncate">
+                {userState?.email}
+              </p>
             </figcaption>
           </figure>
 
-          <button className="w-full p-2 mt-2 bg-gray-100 rounded text-blue-500">
+          <button className="w-full p-2 mt-2 bg-gray-100 rounded text-blue-500 hover:bg-gray-200 duration-300">
             Ver perfil
           </button>
         </div>

@@ -1,76 +1,14 @@
-import { useContext, useState } from "react";
-import { useForm } from "@/hooks/useForm";
 import { AuthTemplate } from "../templates/AuthTemplate";
 import { Link } from "react-router-dom";
-import { enviAppApi } from "@/api";
-import validator from "validator";
-import { AuthContext } from "@/context/AuthContext";
+
+import { useLogin } from "@/hooks/useLogin";
 
 export const LoginScreen = () => {
-  const { fetchUserData } = useContext(AuthContext);
-  const { email, password, onInputChange } = useForm({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState<string | null>(null);
-  const [loadingLogin, setLoadingLogin] = useState(false);
-
-  const onValidateForm = (email: string, password: string) => {
-    if (!validator.isEmail(email)) {
-      setError("El email no es válido");
-      return false;
-    }
-
-    if (
-      !validator.isStrongPassword(password, {
-        minLength: 6,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 0,
-      })
-    ) {
-      setError(
-        "La contraseña debe tener al menos 6 caracteres, por lo menos una mayúscula, una minúscula y un número"
-      );
-
-      return false;
-    }
-
-    return true;
-  };
-
-  const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!onValidateForm(email, password)) {
-      return;
-    }
-
-    setLoadingLogin(true);
-
-    try {
-      const resp = await enviAppApi.post("/auth/login", {
-        email,
-        password,
-      });
-
-      localStorage.setItem("token", resp.data.token);
-      localStorage.setItem("token-init", `${new Date().getTime()}`);
-      localStorage.setItem("userState", JSON.stringify(resp.data));
-
-      fetchUserData(resp.data);
-    } catch (e: any) {
-      console.log("Error", e);
-
-      setError(e.response.data.message);
-    } finally {
-      setLoadingLogin(false);
-    }
-  };
+  const { email, error, loadingLogin, onInputChange, onLogin, password } =
+    useLogin();
 
   return (
-    <AuthTemplate titleRedirect="Regístrate" linkRedirect="/register">
+    <AuthTemplate titleRedirect="Regístrate" linkRedirect="/auth/register">
       <form className="grid gap-2" onSubmit={onLogin}>
         <div>
           <label
@@ -114,7 +52,7 @@ export const LoginScreen = () => {
         </div>
         <div className="grid gap-4">
           <button className="w-full border rounded-lg py-3.5 font-medium flex items-center justify-center gap-2 hover:bg-gray-100 duration-300">
-            <img className="w-7 h-7" src="./assets/gmail.svg" alt="Google" />
+            <img className="w-7 h-7" src="/assets/gmail.svg" alt="Google" />
             <p>Iniciar con Google</p>
           </button>
         </div>

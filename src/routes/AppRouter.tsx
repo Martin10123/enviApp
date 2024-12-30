@@ -7,7 +7,9 @@ import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const AppRouter = () => {
-  const { isLogged } = useContext(AuthContext);
+  const { isLogged, loading } = useContext(AuthContext);
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <Routes>
@@ -19,11 +21,11 @@ export const AppRouter = () => {
         </>
       ) : (
         <>
-          <Route path="/register" element={<RegisterScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/recover" element={<ForgotPassword />} />
+          <Route path="/auth/register" element={<RegisterScreen />} />
+          <Route path="/auth/login" element={<LoginScreen />} />
+          <Route path="/auth/recover" element={<ForgotPassword />} />
 
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="/*" element={<Navigate to="/auth/login" />} />
         </>
       )}
     </Routes>

@@ -1,11 +1,9 @@
-import {
-  CardProductPage,
-  NavbarHomePage,
-  PostPackage,
-  SidebarNotificationPage,
-  SidebarProfilePage,
-  TextareaPostPage,
-} from "@/components";
+import { CardProductPage } from "@/components/pages/CardProductPage";
+import { NavbarHomePage } from "@/components/pages/NavbarHomePage";
+import { PostPackage } from "@/components/pages/PostPackage";
+import { SidebarNotificationPage } from "@/components/pages/SidebarNotificationPage";
+import { SidebarProfilePage } from "@/components/pages/SidebarProfilePage";
+import { TextareaPostPage } from "@/components/pages/TextareaPostPage";
 import { useEffect, useState } from "react";
 
 export const HomePage = () => {

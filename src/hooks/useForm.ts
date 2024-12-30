@@ -1,16 +1,15 @@
+import { FormElement } from "@/interfaces/interfaces";
 import { useState } from "react";
 
 type FormState = {
-  [key: string]: any; // Forma general para permitir cualquier propiedad
+  [key: string]: any;
 };
 
 export const useForm = <T extends FormState>(initialForm: T) => {
-  const [formState, setFormState] = useState<T>(initialForm);
+  const [formState, setFormState] = useState(initialForm);
 
-  const onInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
+  const onInputChange = ({ target }: { target: FormElement }) => {
+    const { name, value } = target;
     setFormState({
       ...formState,
       [name]: value,
@@ -22,7 +21,7 @@ export const useForm = <T extends FormState>(initialForm: T) => {
   };
 
   return {
-    ...formState, // Retorna las propiedades desestructuradas del estado
+    ...formState,
     formState,
     onInputChange,
     onResetForm,

@@ -19,7 +19,7 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
       <figure>
         <img
           className="w-12 h-auto"
-          src="./assets/logoEnviApp.svg"
+          src="/assets/logoEnviApp.svg"
           alt="Logo enviapp"
         />
       </figure>

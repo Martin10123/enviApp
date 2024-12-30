@@ -1,38 +1,42 @@
-import { UploadFilesRegister } from "@/components";
-
 export const DocumentsRegisters = () => {
   return (
-    <>
+    <div className="grid gap-6">
       <div>
-        <label
-          htmlFor="tipoDocumento"
-          className="w-max block mb-2 text-sm font-medium text-gray-900"
-        >
+        <label className="text-base text-gray-500 font-semibold mb-2 block">
           Copia de cédula
         </label>
-
-        <UploadFilesRegister />
+        <input
+          type="file"
+          className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+        />
       </div>
       <div>
-        <label
-          htmlFor="tipoDocumento"
-          className="w-max block mb-2 text-sm font-medium text-gray-900"
-        >
+        <label className="text-base text-gray-500 font-semibold mb-2 block">
           Cuenta bancaria
         </label>
-
-        <UploadFilesRegister />
+        <input
+          type="file"
+          className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+        />
       </div>
       <div>
-        <label
-          htmlFor="tipoDocumento"
-          className="w-max block mb-2 text-sm font-medium text-gray-900"
-        >
+        <label className="text-base text-gray-500 font-semibold mb-2 block">
           Referencias personales
         </label>
-
-        <UploadFilesRegister />
+        <input
+          type="file"
+          className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+        />
       </div>
-    </>
+      <div>
+        <label className="text-base text-gray-500 font-semibold mb-2 block">
+          Antecedentes judiciales
+        </label>
+        <input
+          type="file"
+          className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+        />
+      </div>
+    </div>
   );
 };
