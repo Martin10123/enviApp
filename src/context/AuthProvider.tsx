@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
-import { AuthContext, AuthState } from "./AuthContext";
+import { AuthContext } from "./AuthContext";
+import { AuthState } from "../interfaces/AuthInterfaces";
 
 export const AuthProvider = ({ children }: { children: ReactElement }) => {
   const [isLogged, setIsLogged] = useState(false);
