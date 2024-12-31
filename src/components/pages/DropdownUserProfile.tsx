@@ -2,6 +2,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { useCloseModal } from "@/hooks/useCloseClickOutside";
 import { avatar1 } from "@/images";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const DropdownUserProfile = ({
   handleOpenProfileDrop,
@@ -15,8 +16,9 @@ export const DropdownUserProfile = ({
   };
 
   const { signOut, userState } = useContext(AuthContext);
-  const ref = useCloseModal<HTMLDivElement>(handleClose);
   const [isVisible, setIsVisible] = useState(false);
+  const ref = useCloseModal<HTMLDivElement>(handleClose);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -39,8 +41,8 @@ export const DropdownUserProfile = ({
           <figure className="flex items-center gap-4">
             <img
               className="inline-block size-14 rounded-full object-cover ring-2 ring-white"
-              src={avatar1}
-              alt=""
+              src={userState?.avatarUrl || avatar1}
+              alt="Foto de perfil"
             />
             <figcaption>
               <h3 className="text-lg font-bold">
@@ -52,7 +54,10 @@ export const DropdownUserProfile = ({
             </figcaption>
           </figure>
 
-          <button className="w-full p-2 mt-2 bg-gray-100 rounded text-blue-500 hover:bg-gray-200 duration-300">
+          <button
+            className="w-full p-2 mt-2 bg-gray-100 rounded text-blue-500 hover:bg-gray-200 duration-300"
+            onClick={() => navigate(`/${userState?.id}`)}
+          >
             Ver perfil
           </button>
         </div>

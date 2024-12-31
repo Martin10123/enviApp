@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { enviAppLogin } from "../images";
+import { enviAppLogin, logo } from "../images";
 
 interface AuthTemplateProps {
   children: React.ReactNode | React.ReactNode[];
@@ -18,7 +18,7 @@ export const AuthTemplate = ({
         <nav className="flex items-center gap-4">
           <img
             className="w-12 h-12 object-cover"
-            src="/assets/logoEnviApp.svg"
+            src={logo}
             alt="Logo EnviApp"
           />
 

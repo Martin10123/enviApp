@@ -3,6 +3,7 @@ import { LoginScreen } from "@/auth/LoginScreen";
 import { RegisterScreen } from "@/auth/RegisterScreen";
 import { AuthContext } from "@/context/AuthContext";
 import { HomePage } from "@/pages/HomePage";
+import { ProfilePage } from "@/pages/ProfilePage";
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -16,6 +17,7 @@ export const AppRouter = () => {
       {isLogged ? (
         <>
           <Route path="/" element={<HomePage />} />
+          <Route path="/:id" element={<ProfilePage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </>

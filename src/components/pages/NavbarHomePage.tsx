@@ -1,7 +1,8 @@
-import { avatar1 } from "@/images";
+import { avatar1, logo } from "@/images";
 import { useState } from "react";
 import { DropdownUserProfile } from "./DropdownUserProfile";
 import { ItemListNav } from "./ItemListNav";
+import { Link } from "react-router-dom";
 
 interface NavbarHomePageProps {
   handleOpenSideBar: () => void;
@@ -15,14 +16,14 @@ export const NavbarHomePage = ({ handleOpenSideBar }: NavbarHomePageProps) => {
   };
 
   return (
-    <header className="w-full flex justify-between items-center p-2 bg-white border-b sticky top-0 z-50 lg:max-w-[80rem] lg:m-auto lg:rounded-b-lg lg:shadow-sm">
-      <figure>
+    <header className="w-full flex justify-between items-center p-2 bg-white border-b sticky top-0 z-50 lg:max-w-[85rem] lg:m-auto lg:rounded-b-lg lg:shadow-sm">
+      <Link to="/">
         <img
-          className="w-12 h-auto"
-          src="/assets/logoEnviApp.svg"
+          className="w-12 h-auto cursor-pointer"
+          src={logo}
           alt="Logo enviapp"
         />
-      </figure>
+      </Link>
 
       <nav>
         <ul className="flex items-center gap-2">

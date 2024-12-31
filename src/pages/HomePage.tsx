@@ -1,9 +1,9 @@
 import { CardProductPage } from "@/components/pages/CardProductPage";
-import { NavbarHomePage } from "@/components/pages/NavbarHomePage";
 import { PostPackage } from "@/components/pages/PostPackage";
 import { SidebarNotificationPage } from "@/components/pages/SidebarNotificationPage";
 import { SidebarProfilePage } from "@/components/pages/SidebarProfilePage";
 import { TextareaPostPage } from "@/components/pages/TextareaPostPage";
+import { HomeTemplate } from "@/templates/HomeTemplate";
 import { useEffect, useState } from "react";
 
 export const HomePage = () => {
@@ -38,34 +38,30 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <NavbarHomePage handleOpenSideBar={handleOpenSideBar} />
+    <HomeTemplate handleOpenSideBar={handleOpenSideBar}>
+      <div className="lg:grid gap-6 lg:grid-cols-[auto,1fr,auto]">
+        {openSideBar && (
+          <SidebarProfilePage
+            isScrollDisabled={isScrollDisabled}
+            handleOpenSideBar={handleOpenSideBar}
+          />
+        )}
 
-      <main className="w-full p-3 before:content before:w-full before:h-full lg:max-w-[80rem] lg:m-auto lg:px-0 before:fixed before:top-0 before:left-0 before:-z-50 before:bg-[#e4e4e4] before:bg-opacity-50 before:backdrop-filter before:duration-200 before:ease-in-out">
-        <div className="lg:grid gap-6 lg:grid-cols-[auto,1fr,auto]">
-          {openSideBar && (
-            <SidebarProfilePage
-              isScrollDisabled={isScrollDisabled}
-              handleOpenSideBar={handleOpenSideBar}
-            />
-          )}
+        <div className="w-full flex flex-col items-center justify-center">
+          <TextareaPostPage handleCreatePost={handleCreatePost} />
 
-          <div className="w-full flex flex-col items-center justify-center">
-            <TextareaPostPage handleCreatePost={handleCreatePost} />
-
-            <div className="bg-gray-100 pt-4 flex flex-col items-center gap-4">
-              <CardProductPage isImages />
-              <CardProductPage />
-              <CardProductPage isImages />
-              <CardProductPage />
-            </div>
+          <div className="bg-gray-100 pt-4 flex flex-col items-center gap-4">
+            <CardProductPage isImages />
+            <CardProductPage />
+            <CardProductPage isImages />
+            <CardProductPage />
           </div>
-
-          <SidebarNotificationPage />
         </div>
 
-        {openCreatePost && <PostPackage handleCreatePost={handleCreatePost} />}
-      </main>
-    </>
+        <SidebarNotificationPage />
+      </div>
+
+      {openCreatePost && <PostPackage handleCreatePost={handleCreatePost} />}
+    </HomeTemplate>
   );
 };
