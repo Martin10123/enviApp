@@ -99,7 +99,6 @@ export const ProfilePage = () => {
       {tabs === 1 && (
         <div className="grid gap-4">
           <CardProductPage />
-          <CardProductPage />
         </div>
       )}
 

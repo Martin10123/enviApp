@@ -1,37 +1,19 @@
-import { enviAppApi } from "@/api";
 import React, { useContext, useState } from "react";
-import validator from "validator";
 import { useForm } from "./useForm";
 import { AuthContext } from "@/context/AuthContext";
 
 export const useLogin = () => {
   const { fetchUserData } = useContext(AuthContext);
   const { email, password, onInputChange } = useForm({
-    email: "",
-    password: "",
+    email: "admin",
+    password: "admin",
   });
   const [error, setError] = useState<string | null>(null);
   const [loadingLogin, setLoadingLogin] = useState(false);
 
   const onValidateForm = (email: string, password: string) => {
-    if (!validator.isEmail(email)) {
-      setError("El email no es válido");
-      return false;
-    }
-
-    if (
-      !validator.isStrongPassword(password, {
-        minLength: 6,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 0,
-      })
-    ) {
-      setError(
-        "La contraseña debe tener al menos 6 caracteres, por lo menos una mayúscula, una minúscula y un número"
-      );
-
+    if (!email || !password) {
+      setError("Todos los campos son obligatorios");
       return false;
     }
 
@@ -48,20 +30,43 @@ export const useLogin = () => {
     setLoadingLogin(true);
 
     try {
-      const resp = await enviAppApi.post("/auth/login", {
-        email,
-        password,
-      });
+      // Autenticación local temporal
+      if (email === "admin" && password === "admin") {
+        const fakeUser = {
+          id: "1",
+          firstName: "Admin",
+          lastName: "User",
+          email: "admin@example.com",
+          roles: ["ADMIN"],
+          alias: "admin",
+          country: {
+            id: "CO",
+            name: "Colombia",
+            code: "+57",
+            description: "País de ejemplo para login local",
+            status: "active",
+            flagUrl: "https://flagcdn.com/co.svg",
+            creationDate: new Date().toISOString(),
+            lastUpdateDate: new Date().toISOString(),
+          },
+          token: "fake-token",
+          avatarUrl: "",
+          creationDate: new Date().toISOString(),
+          phone: "+573001112233",
+        };
 
-      localStorage.setItem("token", resp.data.token);
-      localStorage.setItem("token-init", `${new Date().getTime()}`);
-      localStorage.setItem("userState", JSON.stringify(resp.data));
+        localStorage.setItem("token", fakeUser.token);
+        localStorage.setItem("token-init", `${new Date().getTime()}`);
+        localStorage.setItem("userState", JSON.stringify(fakeUser));
 
-      fetchUserData(resp.data);
+        fetchUserData(fakeUser);
+      } else {
+        setError("Credenciales incorrectas");
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
-      console.log("Error", e);
-
-      setError(e.response.data.message);
+      setError("Error inesperado al intentar iniciar sesión");
+      console.error("Error", e);
     } finally {
       setLoadingLogin(false);
     }
